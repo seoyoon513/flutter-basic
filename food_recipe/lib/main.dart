@@ -201,6 +201,7 @@ class HomePage extends StatelessWidget {
                 ),
               ),
             ),
+            Divider(height: 1),
             Expanded(
               child: ListView.builder(
                 itemCount: dataList.length, // 리스트 크기 만큼 반복
