@@ -2,8 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import 'feed.dart';
+import 'package:food_recipe/food.dart';
 
 void main() {
   HttpOverrides.global = MyHttpOverrides();
@@ -98,9 +97,31 @@ class HomePage extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8.0),
-        child: Feed(
-          imageUrl: dataList[1]["imgUrl"],
-          category: dataList[1]["category"],
+        child: Column(
+          children: [
+            TextField(
+              decoration: InputDecoration(
+                // 디자인 관련
+                border: OutlineInputBorder(), // 테두리
+                labelText: '상품을 검색해주세요.',
+                suffixIcon: IconButton(
+                  // 우측 아이콘 배치
+                  onPressed: () {},
+                  icon: Icon(Icons.search),
+                ),
+              ),
+            ),
+            Expanded(
+              child: ListView.builder(
+                itemCount: dataList.length, // 리스트 크기 만큼 반복
+                itemBuilder: (context, index) {
+                  String image = dataList[index]["imgUrl"];
+                  String category = dataList[index]["category"];
+                  return Food(imageUrl: image, category: category);
+                },
+              ),
+            )
+          ],
         ),
       ),
     );
