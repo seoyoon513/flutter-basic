@@ -41,7 +41,18 @@ class HomePage extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Colors.white,
       ),
-      body: Center(child: Text('hello hompage')),
+      body: Column(
+        children: [
+          Image.network(
+            "https://cdn2.thecatapi.com/images/kat_7kqBi.png",
+            height: 400,
+            width: double.infinity,
+            fit: BoxFit.cover, // 이미지의 비율을 유지하면서 고정된 폭과 높이에 맞추어 이미지를 자른다
+          ),
+
+          Center(child: Text('hello hompage')),
+        ],
+      ),
     );
   }
 }
