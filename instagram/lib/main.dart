@@ -60,7 +60,32 @@ class HomePage extends StatelessWidget {
             width: double.infinity,
             fit: BoxFit.cover, // 이미지의 비율을 유지하면서 고정된 폭과 높이에 맞추어 이미지를 자른다
           ),
-
+          Row(
+            children: [
+              IconButton(
+                onPressed: () {},
+                icon: Icon(
+                  CupertinoIcons.heart,
+                  color: Colors.black,
+                ),
+              ),
+              IconButton(
+                onPressed: () {},
+                icon: Icon(
+                  CupertinoIcons.chat_bubble,
+                  color: Colors.black,
+                ),
+              ),
+              Spacer(),
+              IconButton(
+                onPressed: () {},
+                icon: Icon(
+                  CupertinoIcons.bookmark,
+                  color: Colors.black,
+                ),
+              ),
+            ],
+          ),
           Center(child: Text('hello hompage')),
         ],
       ),
