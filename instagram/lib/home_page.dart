@@ -8,26 +8,43 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    final List<String> images = [
+      "https://cdn2.thecatapi.com/images/bi.jpg",
+      "https://cdn2.thecatapi.com/images/63g.jpg",
+      "https://cdn2.thecatapi.com/images/a3h.jpg",
+      "https://cdn2.thecatapi.com/images/a9m.jpg",
+      "https://cdn2.thecatapi.com/images/aph.jpg",
+      "https://cdn2.thecatapi.com/images/1rd.jpg",
+      "https://cdn2.thecatapi.com/images/805.gif",
+    ];
+
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(CupertinoIcons.camera, color: Colors.black),
-          onPressed: () {},
-        ),
-        actions: [
-          IconButton(
+        appBar: AppBar(
+          leading: IconButton(
+            icon: Icon(CupertinoIcons.camera, color: Colors.black),
             onPressed: () {},
-            icon: Icon(CupertinoIcons.paperplane, color: Colors.black),
-          )
-        ],
-        title: Image.asset(
-          'assets/logo.png',
-          height: 32,
+          ),
+          actions: [
+            IconButton(
+              onPressed: () {},
+              icon: Icon(CupertinoIcons.paperplane, color: Colors.black),
+            )
+          ],
+          title: Image.asset(
+            'assets/logo.png',
+            height: 32,
+          ),
+          centerTitle: true,
+          backgroundColor: Colors.white,
         ),
-        centerTitle: true,
-        backgroundColor: Colors.white,
-      ),
-      body: Feed(),
+        body: ListView.builder(
+          itemCount: images.length, // 이미지 배열 크기 만큼 반복
+          itemBuilder: (context, index) {
+            String image = images[index];
+            return Feed(imageUrl: image,);
+          },
+        ),
     );
   }
 }
