@@ -72,17 +72,17 @@ class HomePage extends StatelessWidget {
     // 화면에 보이는 영역
     return Scaffold(
       appBar: AppBar(
+        iconTheme: IconThemeData(color: Colors.black),
         backgroundColor: Colors.white,
-        leading: IconButton(
-          onPressed: () {},
-          icon: Icon(Icons.menu),
-          color: Colors.black,
-        ),
+        // leading: IconButton(
+        //   onPressed: () {},
+        //   icon: Icon(Icons.menu),
+        //   color: Colors.black,
+        // ),
         actions: [
           IconButton(
             onPressed: () {},
             icon: Icon(Icons.perm_identity),
-            color: Colors.black,
           )
         ],
         title: Text(
@@ -94,6 +94,96 @@ class HomePage extends StatelessWidget {
           ),
         ),
         elevation: 0,
+      ),
+      drawer: Drawer(
+        child: Column(
+          // 1. Column 으로 설정
+          children: [
+            // 복수의 위젯 나열
+            DrawerHeader(
+              margin: EdgeInsets.all(0), //기본 마진값 제거
+              decoration: BoxDecoration(
+                color: Colors.amber,
+              ),
+              child: Container(
+                width: double.infinity, // header 가득 채우기
+                child: Column(
+                  children: [
+                    CircleAvatar(
+                      radius: 40,
+                      child: Image.network(
+                        "https://i.ibb.co/CwzHq4z/trans-logo-512.png",
+                      ),
+                    ),
+                    SizedBox(height: 10),
+                    Text(
+                      '닉네임',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Text(
+                      'hello@world.com',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ),
+            // UserAccountsDrawerHeader(
+            //   decoration: BoxDecoration(
+            //     // Drawer head 디자인 변경
+            //     color: Colors.amber,
+            //   ),
+            //   currentAccountPicture: CircleAvatar(
+            //     backgroundImage:
+            //         NetworkImage("https://i.ibb.co/CwzHq4z/trans-logo-512.png"),
+            //   ),
+            //   accountName: Text(
+            //     '닉네임',
+            //     style: TextStyle(
+            //       color: Colors.black,
+            //       fontWeight: FontWeight.bold,
+            //     ),
+            //   ),
+            //   accountEmail: Text(
+            //     'hello@world.com',
+            //     style: TextStyle(
+            //       color: Colors.black,
+            //       fontWeight: FontWeight.bold,
+            //     ),
+            //   ),
+            // ),
+            Expanded(
+              // ListView일 경우 사용할 수 없음
+              child: AspectRatio(
+                aspectRatio: 12 / 4, // 특정 비율로 위젯 보여주기
+                child: PageView(
+                  children: [
+                    Image.network(
+                        "https://i.ibb.co/Q97cmkg/sale-event-banner1.jpg"),
+                    Image.network(
+                        "https://i.ibb.co/GV78j68/sale-event-banner2.jpg"),
+                    Image.network(
+                        "https://i.ibb.co/R3P3RHw/sale-event-banner3.jpg"),
+                    Image.network(
+                        "https://i.ibb.co/LRb1VYs/sale-event-banner4.jpg")
+                  ],
+                ),
+              ),
+            ),
+            ListTile(
+              trailing: Icon(Icons.navigate_next), // 우측 끝에 아이콘 배치
+              title: Text('구매내역'),
+            ),
+            ListTile(
+              trailing: Icon(Icons.navigate_next),
+              title: Text('저장한 레시피'),
+            )
+          ],
+        ), // scaffold의 named argument이므로 appBar에서 나와서 작성
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8.0),
