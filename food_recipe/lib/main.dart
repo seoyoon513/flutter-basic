@@ -3,6 +3,8 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'feed.dart';
+
 void main() {
   HttpOverrides.global = MyHttpOverrides();
   runApp(MyApp());
@@ -58,7 +60,8 @@ class HomePage extends StatelessWidget {
       },
       {
         "category": "피자",
-        "imgUrl": "https://src.hidoc.co.kr/image/lib/2020/6/17/1592363657269_0.jpg",
+        "imgUrl":
+            "https://src.hidoc.co.kr/image/lib/2020/6/17/1592363657269_0.jpg",
       },
       {
         "category": "볶음밥",
@@ -95,50 +98,9 @@ class HomePage extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8.0),
-        child: Column(
-          children: [
-            TextField(
-              decoration: InputDecoration(
-                // 디자인 관련
-                border: OutlineInputBorder(), // 테두리
-                labelText: '상품을 검색해주세요.',
-                suffixIcon: IconButton(
-                  // 우측 아이콘 배치
-                  onPressed: () {},
-                  icon: Icon(Icons.search),
-                ),
-              ),
-            ),
-            Container(
-              height: 120,
-              decoration: BoxDecoration(
-                // Container 위젯 디자인 커스텀
-                image: DecorationImage(
-                  colorFilter: ColorFilter.mode(
-                    Colors.black.withOpacity(0.5), // 투명도 설정
-                    BlendMode.darken,
-                  ),
-                  image: NetworkImage( // 배경 이미지
-                    "https://image.edaily.co.kr/images/photo/files/NP/S/2022/04/PS22040800131.jpg",
-                  ),
-                  fit: BoxFit.cover,
-                ),
-              ),
-              child: Center( // center로 감싸지 않으면 text너비에 맞게 이미지가 줄어듦
-                child: Text(
-                  "수제버거",
-                  style: TextStyle(
-                    fontSize: 30,
-                    color: Colors.white,
-                  ),
-                ),
-              ),
-            )
-            // ListView.builder(
-            //   itemCount: dataList.length,
-            //   itemBuilder: (BuildContext context, int index) {  },
-            // )
-          ],
+        child: Feed(
+          imageUrl: dataList[1]["imgUrl"],
+          category: dataList[1]["category"],
         ),
       ),
     );
