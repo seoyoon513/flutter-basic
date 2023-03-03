@@ -53,6 +53,7 @@ class HomePage extends StatelessWidget {
         backgroundColor: Colors.white,
       ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start, // 정렬
         children: [
           Image.network(
             "https://cdn2.thecatapi.com/images/kat_7kqBi.png",
@@ -86,7 +87,30 @@ class HomePage extends StatelessWidget {
               ),
             ],
           ),
-          Center(child: Text('hello hompage')),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              "2 likes",
+              style: TextStyle(
+                  fontWeight: FontWeight.bold
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              "My cat is docile even when bathed. I put a duck on his head in the wick and he's staring at me. Isn't it so cute??",
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              "FEBRUARY 6",
+              style: TextStyle(
+                color: Colors.grey,
+              ),
+            ),
+          ),
         ],
       ),
     );
