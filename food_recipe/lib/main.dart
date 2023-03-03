@@ -1,8 +1,20 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 void main() {
+  HttpOverrides.global = MyHttpOverrides();
   runApp(MyApp());
+}
+
+class MyHttpOverrides extends HttpOverrides {
+  @override
+  HttpClient createHttpClient(SecurityContext? context) {
+    return super.createHttpClient(context)
+      ..badCertificateCallback =
+          (X509Certificate cert, String host, int port) => true;
+  }
 }
 
 class MyApp extends StatelessWidget {
@@ -27,31 +39,31 @@ class HomePage extends StatelessWidget {
       {
         "category": "수제버거",
         "imgUrl":
-            "https://i.ibb.co/HBGKYn4/foodiesfeed-com-summer-juicy-beef-burger.jpg",
+            "https://image.edaily.co.kr/images/photo/files/NP/S/2022/04/PS22040800131.jpg",
       },
       {
         "category": "건강식",
         "imgUrl":
-            "https://i.ibb.co/mB5YNs2/foodiesfeed-com-pumpkin-soup-with-pumpkin-seeds-on-top.jpg",
+            "https://src.hidoc.co.kr/image/lib/2020/6/23/1592877797677_0.jpg",
       },
       {
         "category": "한식",
         "imgUrl":
-            "https://i.ibb.co/Kzzpc97/Beautiful-vibrant-shot-of-traiditonal-Korean-meals.jpg",
+            "https://image.ajunews.com/content/image/2018/07/25/20180725142544658121.jpg",
       },
       {
         "category": "디저트",
         "imgUrl":
-            "https://i.ibb.co/DL5vJVZ/foodiesfeed-com-carefully-putting-a-blackberry-on-tiramisu.jpg",
+            "https://cdn.thescoop.co.kr/news/photo/201902/33977_43235_210.jpg",
       },
       {
         "category": "피자",
-        "imgUrl": "https://i.ibb.co/qsm8QH4/pizza.jpg",
+        "imgUrl": "https://src.hidoc.co.kr/image/lib/2020/6/17/1592363657269_0.jpg",
       },
       {
         "category": "볶음밥",
         "imgUrl":
-            "https://i.ibb.co/yQDkq2X/foodiesfeed-com-hot-shakshuka-in-a-cast-iron-pan.jpg",
+            "https://www.sbfoods-worldwide.com/ko/recipes/qfttv70000001txe-img/9_FriedRice_L.png",
       },
     ];
 
@@ -90,12 +102,42 @@ class HomePage extends StatelessWidget {
                 // 디자인 관련
                 border: OutlineInputBorder(), // 테두리
                 labelText: '상품을 검색해주세요.',
-                suffixIcon: IconButton( // 우측 아이콘 배치
+                suffixIcon: IconButton(
+                  // 우측 아이콘 배치
                   onPressed: () {},
                   icon: Icon(Icons.search),
                 ),
               ),
+            ),
+            Container(
+              height: 120,
+              decoration: BoxDecoration(
+                // Container 위젯 디자인 커스텀
+                image: DecorationImage(
+                  colorFilter: ColorFilter.mode(
+                    Colors.black.withOpacity(0.5), // 투명도 설정
+                    BlendMode.darken,
+                  ),
+                  image: NetworkImage( // 배경 이미지
+                    "https://image.edaily.co.kr/images/photo/files/NP/S/2022/04/PS22040800131.jpg",
+                  ),
+                  fit: BoxFit.cover,
+                ),
+              ),
+              child: Center( // center로 감싸지 않으면 text너비에 맞게 이미지가 줄어듦
+                child: Text(
+                  "수제버거",
+                  style: TextStyle(
+                    fontSize: 30,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
             )
+            // ListView.builder(
+            //   itemCount: dataList.length,
+            //   itemBuilder: (BuildContext context, int index) {  },
+            // )
           ],
         ),
       ),
