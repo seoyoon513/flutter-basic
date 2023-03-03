@@ -34,6 +34,12 @@ class HomePage extends StatelessWidget {
             icon: Icon(CupertinoIcons.paperplane, color: Colors.black),
           )
         ],
+        title: Image.asset(
+          'assets/logo.png',
+          height: 32,
+        ),
+        centerTitle: true,
+        backgroundColor: Colors.white,
       ),
       body: Center(child: Text('hello hompage')),
     );
