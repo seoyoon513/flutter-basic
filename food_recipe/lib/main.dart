@@ -111,8 +111,10 @@ class HomePage extends StatelessWidget {
                   children: [
                     CircleAvatar(
                       radius: 40,
+                      backgroundColor: Colors.white,
                       child: Image.network(
                         "https://i.ibb.co/CwzHq4z/trans-logo-512.png",
+                        width: 50,
                       ),
                     ),
                     SizedBox(height: 10),
@@ -156,22 +158,19 @@ class HomePage extends StatelessWidget {
             //     ),
             //   ),
             // ),
-            Expanded(
-              // ListView일 경우 사용할 수 없음
-              child: AspectRatio(
-                aspectRatio: 12 / 4, // 특정 비율로 위젯 보여주기
-                child: PageView(
-                  children: [
-                    Image.network(
-                        "https://i.ibb.co/Q97cmkg/sale-event-banner1.jpg"),
-                    Image.network(
-                        "https://i.ibb.co/GV78j68/sale-event-banner2.jpg"),
-                    Image.network(
-                        "https://i.ibb.co/R3P3RHw/sale-event-banner3.jpg"),
-                    Image.network(
-                        "https://i.ibb.co/LRb1VYs/sale-event-banner4.jpg")
-                  ],
-                ),
+            Container(
+              height: 100,
+              child: PageView(
+                children: [
+                  Image.network(
+                      "https://i.ibb.co/Q97cmkg/sale-event-banner1.jpg"),
+                  Image.network(
+                      "https://i.ibb.co/GV78j68/sale-event-banner2.jpg"),
+                  Image.network(
+                      "https://i.ibb.co/R3P3RHw/sale-event-banner3.jpg"),
+                  Image.network(
+                      "https://i.ibb.co/LRb1VYs/sale-event-banner4.jpg")
+                ],
               ),
             ),
             ListTile(
