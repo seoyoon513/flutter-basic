@@ -1,8 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:introduction_screen/introduction_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-void main() {
+// 늦은 초기화, 무조건 값을 넣고 호출 해야함
+late SharedPreferences prefs; // 전역 변수 선언
+
+Future<void> main() async {
+  // main 함수에서 async를 쓰려면 필요함
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // shared_preferences 인스턴스 생성
+  prefs = await SharedPreferences.getInstance();
+
   runApp(MyApp());
 }
 
@@ -11,12 +21,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // SharedPreferences에서 온보딩 완료 여부 조회
+    // isOnboarding에 해당하는 값에서 null을 반환하는 경우 false 할당
+    bool isOnboarded = prefs.getBool("isOnboarded") ?? false;
     return MaterialApp(
-      theme: ThemeData( // 전역적으로 폰트 변경
+      theme: ThemeData(
+        // 전역적으로 폰트 변경
         textTheme: GoogleFonts.getTextTheme('Jua'), // 인터넷 통해 폰트 다운로드
       ),
       debugShowCheckedModeBanner: false,
-      home: OnboardingPage(),
+      home: isOnboarded ? HomePage() : OnboardingPage(),
     );
   }
 }
@@ -75,8 +89,11 @@ class OnboardingPage extends StatelessWidget {
       done: Text("Done"),
       onDone: () {
         // when done button is pressed
-        Navigator.pushReplacement( // 현재 페이지 없애고 다른 페이지 띄우기
-            context, MaterialPageRoute(builder: (context) => HomePage()));
+        prefs.setBool("isOnboarded", true);
+        Navigator.pushReplacement(
+            // 현재 페이지 없애고 다른 페이지 띄우기
+            context,
+            MaterialPageRoute(builder: (context) => HomePage()));
       },
     ));
   }
@@ -90,6 +107,14 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text("Home Page!"),
+        actions: [
+          IconButton(
+            onPressed: () {
+              prefs.clear();
+            },
+            icon: Icon(Icons.delete),
+          )
+        ],
       ),
       body: Center(
         child: Text(
