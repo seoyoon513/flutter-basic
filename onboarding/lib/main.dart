@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 
 void main() {
@@ -11,6 +12,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData( // 전역적으로 폰트 변경
+        textTheme: GoogleFonts.getTextTheme('Jua'), // 인터넷 통해 폰트 다운로드
+      ),
       debugShowCheckedModeBanner: false,
       home: OnboardingPage(),
     );
