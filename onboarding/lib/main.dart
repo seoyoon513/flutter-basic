@@ -71,7 +71,7 @@ class OnboardingPage extends StatelessWidget {
       done: Text("Done"),
       onDone: () {
         // when done button is pressed
-        Navigator.push(
+        Navigator.pushReplacement( // 현재 페이지 없애고 다른 페이지 띄우기
             context, MaterialPageRoute(builder: (context) => HomePage()));
       },
     ));
