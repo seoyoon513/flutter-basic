@@ -119,6 +119,8 @@ class HomePage extends StatelessWidget {
                 child: Text('취소')),
             TextButton(
                 onPressed: () {
+                  BucketService bucketService = context.read<BucketService>();
+                  bucketService.deleteBucket(index);
                   // setState(() {
                   //   bucketlist.removeAt(index); // 삭제
                   // });
@@ -187,7 +189,6 @@ class _CreatePageState extends State<CreatePage> {
                     BucketService bucketService = context.read<BucketService>();
                     bucketService.createBucket(job);
                     Navigator.pop(context); // 화면 종료
-
                   }
                 },
                 child: Text(
