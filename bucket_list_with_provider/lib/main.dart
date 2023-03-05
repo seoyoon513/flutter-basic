@@ -38,8 +38,10 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print('1');
     return Consumer<BucketService>(
       builder: (context, bucketService, child) {
+        print('2');
         // bucketService의 bucketList 가져오기
         List<Bucket> bucketList = bucketService.bucketList;
         return Scaffold(
@@ -182,8 +184,12 @@ class _CreatePageState extends State<CreatePage> {
                   } else {
                     setState(() {
                       error = null;
-                      Navigator.pop(context, job); // 화면 종료 및 데이터 전달
                     });
+                    // BucketService 가져오기
+                    BucketService bucketService = context.read<BucketService>();
+                    bucketService.createBucket(job);
+                    Navigator.pop(context); // 화면 종료
+
                   }
                 },
                 child: Text(
