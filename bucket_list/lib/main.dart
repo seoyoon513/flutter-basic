@@ -17,6 +17,14 @@ class MyApp extends StatelessWidget {
   }
 }
 
+class Bucket {
+  String job; // 할 일
+  bool isDone; // 완료 여부
+
+  Bucket(this.job, this.isDone); // 생성자
+}
+
+
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -25,7 +33,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List<String> bucketlist = ['여행가기', '밥먹기', '잠자기']; // 전체 버킷 리스트 목록
+  List<Bucket> bucketlist = []; // 전체 버킷 리스트 목록
 
   @override
   Widget build(BuildContext context) {
@@ -38,10 +46,10 @@ class _HomePageState extends State<HomePage> {
           : ListView.builder(
               itemCount: bucketlist.length,
               itemBuilder: (BuildContext context, int index) {
-                String bucket = bucketlist[index];
+                Bucket bucket = bucketlist[index];
                 return ListTile(
                   title: Text(
-                    bucket,
+                    bucket.job,
                     style: TextStyle(
                       fontSize: 20,
                     ),
@@ -57,7 +65,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                   onTap: () {
                     // 아이템 클릭시
-                    print('$bucket : 클릭 됨');
+                    bucket.isDone = !bucket.isDone; // isDone 상태 변경
                   },
                 );
               },
@@ -70,7 +78,8 @@ class _HomePageState extends State<HomePage> {
           );
           if (job != null) {
             setState(() { // List에 추가한 후 화면 갱신
-              bucketlist.add(job);
+              Bucket newBucket = Bucket(job, false);
+              bucketlist.add(newBucket);
             });
           }
         },
