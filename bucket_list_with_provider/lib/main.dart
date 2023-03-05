@@ -1,8 +1,17 @@
+import 'package:bucket_list_with_provider/bucket_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    MultiProvider( // 위젯트리 꼭대기에 배치 (MyApp()보다 상위)
+      providers: [
+        ChangeNotifierProvider(create: (context) => BucketService())
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
