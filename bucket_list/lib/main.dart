@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:cupertino_icons/cupertino_icons.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,25 +16,33 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  List<String> bucketlist = ['여행가기']; // 전체 버킷 리스트 목록
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('버킷 리스트'),
-      ),
-      body: Center(
-        child: Text('버킷 리스트를 작성해주세요'),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => CreatePage()));
-        },
-        child: Icon(Icons.add),
-      ),
+        appBar: AppBar(
+          title: Text('버킷 리스트'),
+        ),
+        body: bucketlist.isEmpty // 버킷 리스트 상태에 따라 다른 결과 보여주기
+            ? Center(child: Text('버킷 리스트를 작성해 주세요'))
+            : Center(child: Text('버킷 리스트가 존재합니다!')),
+        floatingActionButton: FloatingActionButton(
+        onPressed: ()
+    {
+      Navigator.push(
+          context, MaterialPageRoute(builder: (_) => CreatePage()));
+    },
+    child: Icon(Icons.add),
+    ),
     );
   }
 }
