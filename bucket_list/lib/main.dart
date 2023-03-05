@@ -59,7 +59,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                   trailing: IconButton(
                     onPressed: () {
-                      print('$bucket : 삭제하기');
+                      showDeleteDialog(context, index);
                     },
                     icon: Icon(
                       CupertinoIcons.delete,
@@ -92,6 +92,35 @@ class _HomePageState extends State<HomePage> {
         },
         child: Icon(Icons.add),
       ),
+    );
+  }
+
+  void showDeleteDialog(BuildContext context, int index) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text('정말로 삭제하시겠습니까?'),
+          actions: [
+            TextButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: Text('취소')),
+            TextButton(
+                onPressed: () {
+                  setState(() {
+                    bucketlist.removeAt(index); // 삭제
+                  });
+                  Navigator.pop(context);
+                },
+                child: Text(
+                  '확인',
+                  style: TextStyle(color: Colors.pink),
+                ))
+          ],
+        );
+      },
     );
   }
 }
