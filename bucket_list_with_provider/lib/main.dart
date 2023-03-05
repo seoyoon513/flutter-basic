@@ -33,76 +33,75 @@ class Bucket {
   Bucket(this.job, this.isDone); // 생성자
 }
 
-class HomePage extends StatefulWidget {
+class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
 
   @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  List<Bucket> bucketlist = []; // 전체 버킷 리스트 목록
-
-  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('버킷 리스트'),
-      ),
-      body: bucketlist.isEmpty // 버킷 리스트 상태에 따라 다른 결과 보여주기
-          ? Center(child: Text('버킷 리스트를 작성해 주세요'))
-          : ListView.builder(
-              itemCount: bucketlist.length,
-              itemBuilder: (BuildContext context, int index) {
-                Bucket bucket = bucketlist[index];
-                return ListTile(
-                  title: Text(
-                    bucket.job,
-                    style: TextStyle(
-                      fontSize: 20,
-                      color: bucket.isDone ? Colors.grey : Colors.black,
-                      decoration: bucket.isDone
-                          ? TextDecoration.lineThrough
-                          : TextDecoration.none,
-                    ),
-                  ),
-                  trailing: IconButton(
-                    onPressed: () {
-                      showDeleteDialog(context, index);
-                    },
-                    icon: Icon(
-                      CupertinoIcons.delete,
-                      color: Colors.grey,
-                    ),
-                  ),
-                  onTap: () {
-                    // 아이템 클릭시
-                    setState(() {
-                      bucket.isDone = !bucket.isDone; // isDone 상태 변경
-                    });
+    return Consumer<BucketService>(
+      builder: (context, bucketService, child) {
+        // bucketService의 bucketList 가져오기
+        List<Bucket> bucketList = bucketService.bucketList;
+        return Scaffold(
+          appBar: AppBar(
+            title: Text('버킷 리스트'),
+          ),
+          body: bucketList.isEmpty // 버킷 리스트 상태에 따라 다른 결과 보여주기
+              ? Center(child: Text('버킷 리스트를 작성해 주세요'))
+              : ListView.builder(
+                  itemCount: bucketList.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    Bucket bucket = bucketList[index];
+                    return ListTile(
+                      title: Text(
+                        bucket.job,
+                        style: TextStyle(
+                          fontSize: 20,
+                          color: bucket.isDone ? Colors.grey : Colors.black,
+                          decoration: bucket.isDone
+                              ? TextDecoration.lineThrough
+                              : TextDecoration.none,
+                        ),
+                      ),
+                      trailing: IconButton(
+                        onPressed: () {
+                          showDeleteDialog(context, index);
+                        },
+                        icon: Icon(
+                          CupertinoIcons.delete,
+                          color: Colors.grey,
+                        ),
+                      ),
+                      onTap: () {
+                        // 아이템 클릭시
+                        // setState(() {
+                        //   bucket.isDone = !bucket.isDone; // isDone 상태 변경
+                        // });
 
-                    print(bucket.isDone);
+                        print(bucket.isDone);
+                      },
+                    );
                   },
-                );
-              },
-            ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () async {
-          String job = await Navigator.push(
-            // pop이 되는 순간까지 기다림
-            context,
-            MaterialPageRoute(builder: (_) => CreatePage()),
-          );
-          if (job != null) {
-            setState(() {
-              // List에 추가한 후 화면 갱신
-              Bucket newBucket = Bucket(job, false);
-              bucketlist.add(newBucket);
-            });
-          }
-        },
-        child: Icon(Icons.add),
-      ),
+                ),
+          floatingActionButton: FloatingActionButton(
+            onPressed: () async {
+              String job = await Navigator.push(
+                // pop이 되는 순간까지 기다림
+                context,
+                MaterialPageRoute(builder: (_) => CreatePage()),
+              );
+              if (job != null) {
+                // setState(() {
+                //   // List에 추가한 후 화면 갱신
+                //   Bucket newBucket = Bucket(job, false);
+                //   bucketlist.add(newBucket);
+                // });
+              }
+            },
+            child: Icon(Icons.add),
+          ),
+        );
+      }
     );
   }
 
@@ -120,9 +119,9 @@ class _HomePageState extends State<HomePage> {
                 child: Text('취소')),
             TextButton(
                 onPressed: () {
-                  setState(() {
-                    bucketlist.removeAt(index); // 삭제
-                  });
+                  // setState(() {
+                  //   bucketlist.removeAt(index); // 삭제
+                  // });
                   Navigator.pop(context);
                 },
                 child: Text(
