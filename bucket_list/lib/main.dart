@@ -39,22 +39,26 @@ class _HomePageState extends State<HomePage> {
               itemCount: bucketlist.length,
               itemBuilder: (BuildContext context, int index) {
                 String bucket = bucketlist[index];
-                return Padding( // Row로 구현
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(bucket,
-                      style: TextStyle(
-                        fontSize: 20,
-                      ),),
-                      IconButton(
-                        padding: EdgeInsets.zero, // 아이콘 기본 패딩값 없애기
-                        onPressed: () {  },
-                        icon: Icon(CupertinoIcons.delete, color: Colors.grey,),
-                      )
-                    ],
+                return ListTile(
+                  title: Text(
+                    bucket,
+                    style: TextStyle(
+                      fontSize: 20,
+                    ),
                   ),
+                  trailing: IconButton(
+                    onPressed: () {
+                      print('$bucket : 삭제하기');
+                    },
+                    icon: Icon(
+                      CupertinoIcons.delete,
+                      color: Colors.grey,
+                    ),
+                  ),
+                  onTap: () {
+                    // 아이템 클릭시
+                    print('$bucket : 클릭 됨');
+                  },
                 );
               },
             ),
