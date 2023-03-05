@@ -63,9 +63,16 @@ class _HomePageState extends State<HomePage> {
               },
             ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (_) => CreatePage()));
+        onPressed: () async {
+          String job = await Navigator.push( // pop이 되는 순간까지 기다림
+            context,
+            MaterialPageRoute(builder: (_) => CreatePage()),
+          );
+          if (job != null) {
+            setState(() { // List에 추가한 후 화면 갱신
+              bucketlist.add(job);
+            });
+          }
         },
         child: Icon(Icons.add),
       ),
@@ -102,7 +109,7 @@ class _CreatePageState extends State<CreatePage> {
               autofocus: true, // 자동 포커스
               decoration: InputDecoration(
                 hintText: '하고 싶은 일을 입력하세요',
-                errorText: error
+                errorText: error,
               ),
             ),
             SizedBox(height: 32),
@@ -113,12 +120,14 @@ class _CreatePageState extends State<CreatePage> {
                 onPressed: () {
                   String job = textController.text;
                   if (job.isEmpty) {
-                    setState(() { // 상태 변경한 경우 setState()를 이용하여 갱신
+                    setState(() {
+                      // 상태 변경한 경우 setState()를 이용하여 갱신
                       error = '내용을 입력해주세요.';
                     });
                   } else {
                     setState(() {
                       error = null;
+                      Navigator.pop(context, job); // 화면 종료 및 데이터 전달
                     });
                   }
                 },
