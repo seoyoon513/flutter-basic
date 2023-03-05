@@ -6,12 +6,19 @@ class BucketService extends ChangeNotifier {
     Bucket('잠자기', false)
   ];
 
-  // Bucket 추가
+  // bucket 추가
   void createBucket(String job) { // 1. String을 받아서
     // 2. Bucket 인스턴스를 만들어 bucketList에 추가
     bucketList.add(Bucket(job, false));
     // 변경사항이 있는 경우 새로고침
-    // Consumer<BucketService>의 builder부분만 새로고침 
+    // Consumer<BucketService>의 builder부분만 새로고침
+    notifyListeners();
+  }
+
+  // bucket 수정
+  void updateBucket(Bucket bucket, int index) {
+    // 인덱스에 해당하는 버킷 리스트에 전달받은 버킷 넣기
+    bucketList[index] = bucket;
     notifyListeners();
   }
 }

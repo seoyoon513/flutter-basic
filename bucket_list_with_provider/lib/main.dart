@@ -76,11 +76,9 @@ class HomePage extends StatelessWidget {
                       ),
                       onTap: () {
                         // 아이템 클릭시
-                        // setState(() {
-                        //   bucket.isDone = !bucket.isDone; // isDone 상태 변경
-                        // });
-
-                        print(bucket.isDone);
+                        bucket.isDone = !bucket.isDone;
+                        // 기존에 setState 안에서 이루어지는 작업을 Provider에서 진행
+                        bucketService.updateBucket(bucket, index);
                       },
                     );
                   },
