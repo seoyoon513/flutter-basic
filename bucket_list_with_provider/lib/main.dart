@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -5,121 +6,189 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a blue toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      debugShowCheckedModeBanner: false,
+      home: HomePage(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+class Bucket {
+  String job; // 할 일
+  bool isDone; // 완료 여부
 
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  Bucket(this.job, this.isDone); // 생성자
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+class HomePage extends StatefulWidget {
+  const HomePage({Key? key}) : super(key: key);
 
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  List<Bucket> bucketlist = []; // 전체 버킷 리스트 목록
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
     return Scaffold(
       appBar: AppBar(
-        // TRY THIS: Try changing the color here to a specific color (to
-        // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
-        // change color while the other colors stay the same.
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
+        title: Text('버킷 리스트'),
       ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
+      body: bucketlist.isEmpty // 버킷 리스트 상태에 따라 다른 결과 보여주기
+          ? Center(child: Text('버킷 리스트를 작성해 주세요'))
+          : ListView.builder(
+              itemCount: bucketlist.length,
+              itemBuilder: (BuildContext context, int index) {
+                Bucket bucket = bucketlist[index];
+                return ListTile(
+                  title: Text(
+                    bucket.job,
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: bucket.isDone ? Colors.grey : Colors.black,
+                      decoration: bucket.isDone
+                          ? TextDecoration.lineThrough
+                          : TextDecoration.none,
+                    ),
+                  ),
+                  trailing: IconButton(
+                    onPressed: () {
+                      showDeleteDialog(context, index);
+                    },
+                    icon: Icon(
+                      CupertinoIcons.delete,
+                      color: Colors.grey,
+                    ),
+                  ),
+                  onTap: () {
+                    // 아이템 클릭시
+                    setState(() {
+                      bucket.isDone = !bucket.isDone; // isDone 상태 변경
+                    });
+
+                    print(bucket.isDone);
+                  },
+                );
+              },
+            ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () async {
+          String job = await Navigator.push(
+            // pop이 되는 순간까지 기다림
+            context,
+            MaterialPageRoute(builder: (_) => CreatePage()),
+          );
+          if (job != null) {
+            setState(() {
+              // List에 추가한 후 화면 갱신
+              Bucket newBucket = Bucket(job, false);
+              bucketlist.add(newBucket);
+            });
+          }
+        },
+        child: Icon(Icons.add),
+      ),
+    );
+  }
+
+  void showDeleteDialog(BuildContext context, int index) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text('정말로 삭제하시겠습니까?'),
+          actions: [
+            TextButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: Text('취소')),
+            TextButton(
+                onPressed: () {
+                  setState(() {
+                    bucketlist.removeAt(index); // 삭제
+                  });
+                  Navigator.pop(context);
+                },
+                child: Text(
+                  '확인',
+                  style: TextStyle(color: Colors.pink),
+                ))
+          ],
+        );
+      },
+    );
+  }
+}
+
+class CreatePage extends StatefulWidget {
+  const CreatePage({Key? key}) : super(key: key);
+
+  @override
+  State<CreatePage> createState() => _CreatePageState();
+}
+
+class _CreatePageState extends State<CreatePage> {
+  // TextField의 값을 가져올 때 사용
+  TextEditingController textController = TextEditingController();
+
+  // 경고 메세지
+  String? error;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('버킷 리스트 작성'),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16),
         child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          //
-          // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
-          // action in the IDE, or press "p" in the console), to see the
-          // wireframe for each widget.
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+          children: [
+            TextField(
+              controller: textController,
+              autofocus: true, // 자동 포커스
+              decoration: InputDecoration(
+                hintText: '하고 싶은 일을 입력하세요',
+                errorText: error,
+              ),
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
+            SizedBox(height: 32),
+            Container(
+              width: double.infinity,
+              height: 48,
+              child: ElevatedButton(
+                onPressed: () {
+                  String job = textController.text;
+                  if (job.isEmpty) {
+                    setState(() {
+                      // 상태 변경한 경우 setState()를 이용하여 갱신
+                      error = '내용을 입력해주세요.';
+                    });
+                  } else {
+                    setState(() {
+                      error = null;
+                      Navigator.pop(context, job); // 화면 종료 및 데이터 전달
+                    });
+                  }
+                },
+                child: Text(
+                  '추가하기',
+                  style: TextStyle(
+                    fontSize: 18,
+                  ),
+                ),
+              ),
+            )
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
