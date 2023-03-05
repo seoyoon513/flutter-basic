@@ -24,7 +24,6 @@ class Bucket {
   Bucket(this.job, this.isDone); // 생성자
 }
 
-
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -52,6 +51,10 @@ class _HomePageState extends State<HomePage> {
                     bucket.job,
                     style: TextStyle(
                       fontSize: 20,
+                      color: bucket.isDone ? Colors.grey : Colors.black,
+                      decoration: bucket.isDone
+                          ? TextDecoration.lineThrough
+                          : TextDecoration.none,
                     ),
                   ),
                   trailing: IconButton(
@@ -65,7 +68,11 @@ class _HomePageState extends State<HomePage> {
                   ),
                   onTap: () {
                     // 아이템 클릭시
-                    bucket.isDone = !bucket.isDone; // isDone 상태 변경
+                    setState(() {
+                      bucket.isDone = !bucket.isDone; // isDone 상태 변경
+                    });
+
+                    print(bucket.isDone);
                   },
                 );
               },
