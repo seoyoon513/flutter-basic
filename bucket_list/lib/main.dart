@@ -73,8 +73,19 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-class CreatePage extends StatelessWidget {
+class CreatePage extends StatefulWidget {
   const CreatePage({Key? key}) : super(key: key);
+
+  @override
+  State<CreatePage> createState() => _CreatePageState();
+}
+
+class _CreatePageState extends State<CreatePage> {
+  // TextField의 값을 가져올 때 사용
+  TextEditingController textController = TextEditingController();
+
+  // 경고 메세지
+  String? error;
 
   @override
   Widget build(BuildContext context) {
@@ -87,15 +98,30 @@ class CreatePage extends StatelessWidget {
         child: Column(
           children: [
             TextField(
+              controller: textController,
               autofocus: true, // 자동 포커스
-              decoration: InputDecoration(hintText: '하고 싶은 일을 입력하세요'),
+              decoration: InputDecoration(
+                hintText: '하고 싶은 일을 입력하세요',
+                errorText: error
+              ),
             ),
             SizedBox(height: 32),
             Container(
               width: double.infinity,
               height: 48,
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  String job = textController.text;
+                  if (job.isEmpty) {
+                    setState(() { // 상태 변경한 경우 setState()를 이용하여 갱신
+                      error = '내용을 입력해주세요.';
+                    });
+                  } else {
+                    setState(() {
+                      error = null;
+                    });
+                  }
+                },
                 child: Text(
                   '추가하기',
                   style: TextStyle(
