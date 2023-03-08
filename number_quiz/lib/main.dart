@@ -28,6 +28,21 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   String quiz = "";
 
+  @override
+  void initState() { // 1. async, await를 사용할 수 없다
+    super.initState();
+    print('시작');
+    getQuiz();
+  }
+
+  // 퀴즈 가져오기
+  Future<void> getQuiz() async { // 2. 함수로 따로 만들어서 실행
+    String trivia = await getNumberTrivia();
+    setState(() {
+      quiz = trivia;
+    });
+  }
+
   // Numbers API 호출하기
   Future<String> getNumberTrivia() async {
     // get 메서드로 URL 호출
@@ -61,9 +76,8 @@ class _HomePageState extends State<HomePage> {
             SizedBox(
               height: 42,
               child: ElevatedButton(
-                onPressed: () async {
-                  quiz = await getNumberTrivia();
-                  setState(() {});
+                onPressed: () {
+                  getQuiz();
                 },
                 child: Text(
                   'New Quiz',
