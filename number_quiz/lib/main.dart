@@ -55,42 +55,44 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.pink,
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Expanded(
-                // 화면 안에서 최대한 펼쳐지기
-                child: Center(
-              child: Text(
-                quiz,
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 24,
-                ),
-              ),
-            )),
-            SizedBox(
-              height: 42,
-              child: ElevatedButton(
-                onPressed: () {
-                  getQuiz();
-                },
+      backgroundColor: Colors.pinkAccent,
+      body: SafeArea( // 기기로 인해 가려지는 부분 띄우기
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Expanded(
+                  // 화면 안에서 최대한 펼쳐지기
+                  child: Center(
                 child: Text(
-                  'New Quiz',
+                  quiz,
+                  textAlign: TextAlign.center,
                   style: TextStyle(
-                    color: Colors.pink,
+                    color: Colors.white,
                     fontSize: 24,
                   ),
                 ),
-                style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(Colors.white)),
-              ),
-            )
-          ],
+              )),
+              SizedBox(
+                height: 42,
+                child: ElevatedButton(
+                  onPressed: () {
+                    getQuiz();
+                  },
+                  child: Text(
+                    'New Quiz',
+                    style: TextStyle(
+                      color: Colors.pinkAccent,
+                      fontSize: 24,
+                    ),
+                  ),
+                  style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(Colors.white)),
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
