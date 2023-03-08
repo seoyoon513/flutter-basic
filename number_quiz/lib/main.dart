@@ -18,8 +18,15 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  String quiz = "";
 
   // Numbers API 호출하기
   Future<String> getNumberTrivia() async {
@@ -43,7 +50,7 @@ class HomePage extends StatelessWidget {
                 // 화면 안에서 최대한 펼쳐지기
                 child: Center(
               child: Text(
-                '퀴즈',
+                quiz,
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Colors.white,
@@ -54,8 +61,9 @@ class HomePage extends StatelessWidget {
             SizedBox(
               height: 42,
               child: ElevatedButton(
-                onPressed: () {
-                  getNumberTrivia();
+                onPressed: () async {
+                  quiz = await getNumberTrivia();
+                  setState(() {});
                 },
                 child: Text(
                   'New Quiz',
@@ -65,8 +73,7 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
                 style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(Colors.white)
-                ),
+                    backgroundColor: MaterialStateProperty.all(Colors.white)),
               ),
             )
           ],
