@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -19,6 +20,15 @@ class MyApp extends StatelessWidget {
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
+
+  // Numbers API 호출하기
+  Future<String> getNumberTrivia() async {
+    // get 메서드로 URL 호출
+    Response result = await Dio().get('http://numbersapi.com/random/trivia');
+    String trivia = result.data; // 응답 결과 가져오기
+    print(trivia);
+    return trivia; // 결과 반환
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +54,9 @@ class HomePage extends StatelessWidget {
             SizedBox(
               height: 42,
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  getNumberTrivia();
+                },
                 child: Text(
                   'New Quiz',
                   style: TextStyle(
