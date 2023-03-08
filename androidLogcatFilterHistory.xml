@@ -1,28 +1,28 @@
 <application>
   <component name="AndroidLogcatFilterHistory">
-    <option name="mostRecentlyUsed" value="!!!!" />
+    <option name="mostRecentlyUsed" value="package:mine makeUrl" />
     <option name="nonFavorites">
       <list>
+        <option value="package:mine makeUrl" />
+        <option value="package:mine studyWeek" />
+        <option value="package:mine https://gw-smartall.wjthinkbig.com/study/v1.0/todays/studyWeek?YM_DT=&amp;ORDER_SEQ=81734443&amp;AUTH_CODE=S200&amp;SYSTEM_CODE=NY05" />
+        <option value="https://gw-smartall.wjthinkbig.com/study/v1.0/todays/studyWeek?YM_DT=&amp;ORDER_SEQ=81734443&amp;AUTH_CODE=S200&amp;SYSTEM_CODE=NY05" />
+        <option value="SCHOOL_STUDY" />
+        <option value="package:mine SCOOL" />
+        <option value="package:mine YM_DT" />
+        <option value="package:mine down" />
+        <option value="package:mine header" />
+        <option value="package:mine" />
+        <option value="package:mine ai" />
+        <option value="package:mine 미션" />
+        <option value="package:mine DOWN" />
+        <option value="down" />
+        <option value="package:mine std" />
+        <option value="뉴스" />
+        <option value="스마트올뉴스" />
+        <option value="서~허" />
         <option value="!!!!" />
         <option value="serial" />
-        <option value="memeber" />
-        <option value="parentid" />
-        <option value="parent" />
-        <option value="member" />
-        <option value="package:mine address" />
-        <option value="package:mine mac" />
-        <option value="package:mine serial" />
-        <option value="srial" />
-        <option value="mac" />
-        <option value="macAddress" />
-        <option value="async auth auth" />
-        <option value="auth" />
-        <option value="contract" />
-        <option value="###" />
-        <option value="package:mine secure token" />
-        <option value="package:mine token" />
-        <option value="package:mine contract" />
-        <option value="package:mine " />
       </list>
     </option>
   </component>
