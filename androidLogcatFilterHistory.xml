@@ -1,8 +1,9 @@
 <application>
   <component name="AndroidLogcatFilterHistory">
-    <option name="mostRecentlyUsed" value="###" />
+    <option name="mostRecentlyUsed" value="contract" />
     <option name="nonFavorites">
       <list>
+        <option value="contract" />
         <option value="###" />
         <option value="package:mine secure token" />
         <option value="package:mine token" />
@@ -22,7 +23,6 @@
         <option value="package:mine ymDt" />
         <option value="package:mine serial" />
         <option value="package:mine version" />
-        <option value="빌드" />
       </list>
     </option>
   </component>
