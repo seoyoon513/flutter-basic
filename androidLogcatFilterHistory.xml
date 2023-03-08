@@ -1,12 +1,18 @@
 <application>
   <component name="AndroidLogcatFilterHistory">
-    <option name="mostRecentlyUsed" value="빌드" />
+    <option name="mostRecentlyUsed" value="package:mine token" />
     <option name="nonFavorites">
       <list>
+        <option value="package:mine token" />
+        <option value="package:mine order" />
+        <option value="package:mine ym" />
+        <option value="package:mine ymDt" />
+        <option value="package:mine serial" />
+        <option value="package:mine version" />
+        <option value="package:mine " />
         <option value="빌드" />
         <option value="package:mine 값" />
         <option value="package:mine DOWN_MENU" />
-        <option value="package:mine " />
         <option value="package:mine 수학" />
         <option value="package:mine" />
         <option value="package:mine Selected" />
