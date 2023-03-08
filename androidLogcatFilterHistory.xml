@@ -1,8 +1,15 @@
 <application>
   <component name="AndroidLogcatFilterHistory">
-    <option name="mostRecentlyUsed" value="package:mine token" />
+    <option name="mostRecentlyUsed" value="package:mine 서~허" />
     <option name="nonFavorites">
       <list>
+        <option value="package:mine 서~허" />
+        <option value="package:mine 영어" />
+        <option value="package:mine" />
+        <option value="package:mine system" />
+        <option value="package:mine week" />
+        <option value="package:mine studyWeek" />
+        <option value="package:mine auth" />
         <option value="package:mine token" />
         <option value="package:mine order" />
         <option value="package:mine ym" />
@@ -14,12 +21,8 @@
         <option value="package:mine 값" />
         <option value="package:mine DOWN_MENU" />
         <option value="package:mine 수학" />
-        <option value="package:mine" />
         <option value="package:mine Selected" />
         <option value="package:mine Selected date" />
-        <option value="package:mine 날짜" />
-        <option value="package:mine character" />
-        <option value="package:mine player" />
       </list>
     </option>
   </component>
