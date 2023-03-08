@@ -1,8 +1,12 @@
 <application>
   <component name="AndroidLogcatFilterHistory">
-    <option name="mostRecentlyUsed" value="!!!!" />
+    <option name="mostRecentlyUsed" value="mac" />
     <option name="nonFavorites">
       <list>
+        <option value="mac" />
+        <option value="macAddress" />
+        <option value="async auth auth" />
+        <option value="auth" />
         <option value="!!!!" />
         <option value="contract" />
         <option value="###" />
@@ -19,10 +23,6 @@
         <option value="package:mine week" />
         <option value="package:mine studyWeek" />
         <option value="package:mine auth" />
-        <option value="package:mine order" />
-        <option value="package:mine ym" />
-        <option value="package:mine ymDt" />
-        <option value="package:mine serial" />
       </list>
     </option>
   </component>
