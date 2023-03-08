@@ -1,28 +1,28 @@
 <application>
   <component name="AndroidLogcatFilterHistory">
-    <option name="mostRecentlyUsed" value="mac" />
+    <option name="mostRecentlyUsed" value="!!!!" />
     <option name="nonFavorites">
       <list>
+        <option value="!!!!" />
+        <option value="serial" />
+        <option value="memeber" />
+        <option value="parentid" />
+        <option value="parent" />
+        <option value="member" />
+        <option value="package:mine address" />
+        <option value="package:mine mac" />
+        <option value="package:mine serial" />
+        <option value="srial" />
         <option value="mac" />
         <option value="macAddress" />
         <option value="async auth auth" />
         <option value="auth" />
-        <option value="!!!!" />
         <option value="contract" />
         <option value="###" />
         <option value="package:mine secure token" />
         <option value="package:mine token" />
         <option value="package:mine contract" />
         <option value="package:mine " />
-        <option value="계약번호" />
-        <option value="package:mine 계약번호" />
-        <option value="package:mine 서~허" />
-        <option value="package:mine 영어" />
-        <option value="package:mine" />
-        <option value="package:mine system" />
-        <option value="package:mine week" />
-        <option value="package:mine studyWeek" />
-        <option value="package:mine auth" />
       </list>
     </option>
   </component>
