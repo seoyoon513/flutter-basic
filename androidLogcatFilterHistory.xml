@@ -1,12 +1,12 @@
 <application>
   <component name="AndroidLogcatFilterHistory">
-    <option name="mostRecentlyUsed" value="header" />
+    <option name="mostRecentlyUsed" value="auth" />
     <option name="nonFavorites">
       <list>
+        <option value="auth" />
         <option value="header" />
         <option value="!!!!" />
         <option value="agent" />
-        <option value="auth" />
         <option value="package:mine !!!!" />
         <option value="package:mine" />
         <option value="package:mine encoding" />
