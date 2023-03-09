@@ -1,8 +1,11 @@
 <application>
   <component name="AndroidLogcatFilterHistory">
-    <option name="mostRecentlyUsed" value="package:mine STUDY" />
+    <option name="mostRecentlyUsed" value="package:mine header" />
     <option name="nonFavorites">
       <list>
+        <option value="package:mine header" />
+        <option value="package:mine !!!!" />
+        <option value="package:mine token" />
         <option value="package:mine STUDY" />
         <option value="package:mine " />
         <option value="package:mine STUDY_LIST" />
@@ -18,11 +21,8 @@
         <option value="package:mine 누리고" />
         <option value="package:mine 누리한글" />
         <option value="package:mine auth" />
-        <option value="package:mine !!!!" />
         <option value="package:mine Auth" />
         <option value="package:mine makeUrl" />
-        <option value="package:mine studyWeek" />
-        <option value="package:mine https://gw-smartall.wjthinkbig.com/study/v1.0/todays/studyWeek?YM_DT=&amp;ORDER_SEQ=81734443&amp;AUTH_CODE=S200&amp;SYSTEM_CODE=NY05" />
       </list>
     </option>
   </component>
