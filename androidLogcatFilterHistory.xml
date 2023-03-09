@@ -1,9 +1,21 @@
 <application>
   <component name="AndroidLogcatFilterHistory">
+    <option name="mostRecentlyUsed" value="header" />
     <option name="nonFavorites">
       <list>
-        <option value="package:mine " />
+        <option value="header" />
+        <option value="!!!!" />
+        <option value="agent" />
+        <option value="auth" />
         <option value="package:mine !!!!" />
+        <option value="package:mine" />
+        <option value="package:mine encoding" />
+        <option value="package:mine agent" />
+        <option value="package:mine Aget" />
+        <option value="package:mine AGENT" />
+        <option value="package:mine Auth" />
+        <option value="tmp" />
+        <option value="package:mine " />
         <option value="package:mine !!!" />
         <option value="package:mine header" />
         <option value="package:mine token" />
@@ -11,17 +23,6 @@
         <option value="package:mine STUDY_LIST" />
         <option value="package:mine DOWN" />
         <option value="package:mine BANNER" />
-        <option value="package:mine STUDY_" />
-        <option value="package:mine 키즈" />
-        <option value="package:mine start" />
-        <option value="스타" />
-        <option value="스타샵" />
-        <option value="DOWN_MENU" />
-        <option value="MENU_NAME" />
-        <option value="package:mine 누리고" />
-        <option value="package:mine 누리한글" />
-        <option value="package:mine auth" />
-        <option value="package:mine Auth" />
       </list>
     </option>
   </component>
