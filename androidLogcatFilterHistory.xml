@@ -3,6 +3,9 @@
     <option name="nonFavorites">
       <list>
         <option value="package:mine " />
+        <option value="MENU" />
+        <option value="MENU_THUMING_URL" />
+        <option value="package:mine MENU_THUMING_URL" />
         <option value="auth" />
         <option value="header" />
         <option value="!!!!" />
@@ -19,9 +22,6 @@
         <option value="package:mine header" />
         <option value="package:mine token" />
         <option value="package:mine STUDY" />
-        <option value="package:mine STUDY_LIST" />
-        <option value="package:mine DOWN" />
-        <option value="package:mine BANNER" />
       </list>
     </option>
   </component>
