@@ -1,10 +1,14 @@
 <application>
   <component name="AndroidLogcatFilterHistory">
-    <option name="mostRecentlyUsed" value="package:mine BANNER_ICON" />
+    <option name="mostRecentlyUsed" value="package:mine" />
     <option name="nonFavorites">
       <list>
-        <option value="package:mine BANNER_ICON" />
+        <option value="package:mine" />
+        <option value="package:mine [post" />
         <option value="package:mine " />
+        <option value="package:mine Y" />
+        <option value="package:mine MENU" />
+        <option value="package:mine BANNER_ICON" />
         <option value="MENU" />
         <option value="MENU_THUMING_URL" />
         <option value="package:mine MENU_THUMING_URL" />
@@ -13,16 +17,12 @@
         <option value="!!!!" />
         <option value="agent" />
         <option value="package:mine !!!!" />
-        <option value="package:mine" />
         <option value="package:mine encoding" />
         <option value="package:mine agent" />
         <option value="package:mine Aget" />
         <option value="package:mine AGENT" />
         <option value="package:mine Auth" />
         <option value="tmp" />
-        <option value="package:mine !!!" />
-        <option value="package:mine header" />
-        <option value="package:mine token" />
       </list>
     </option>
   </component>
