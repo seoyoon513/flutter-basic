@@ -1,8 +1,8 @@
 <application>
   <component name="AndroidLogcatFilterHistory">
-    <option name="mostRecentlyUsed" value="package:mine" />
     <option name="nonFavorites">
       <list>
+        <option value="package:mine " />
         <option value="auth" />
         <option value="header" />
         <option value="!!!!" />
@@ -15,7 +15,6 @@
         <option value="package:mine AGENT" />
         <option value="package:mine Auth" />
         <option value="tmp" />
-        <option value="package:mine " />
         <option value="package:mine !!!" />
         <option value="package:mine header" />
         <option value="package:mine token" />
