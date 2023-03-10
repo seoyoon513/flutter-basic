@@ -1,7 +1,9 @@
 <application>
   <component name="AndroidLogcatFilterHistory">
+    <option name="mostRecentlyUsed" value="package:mine BANNER_ICON" />
     <option name="nonFavorites">
       <list>
+        <option value="package:mine BANNER_ICON" />
         <option value="package:mine " />
         <option value="MENU" />
         <option value="MENU_THUMING_URL" />
@@ -21,7 +23,6 @@
         <option value="package:mine !!!" />
         <option value="package:mine header" />
         <option value="package:mine token" />
-        <option value="package:mine STUDY" />
       </list>
     </option>
   </component>
