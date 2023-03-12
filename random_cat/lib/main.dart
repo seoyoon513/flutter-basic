@@ -35,20 +35,28 @@ class HomePage extends StatelessWidget {
           )
         ],
       ),
-      body: GridView.count( // 자동 스크롤
-        mainAxisSpacing: 8, // 아래와의 간격
-        crossAxisSpacing: 8, // 양옆으로 간격
+      body: GridView.count(
+        // 자동 스크롤
+        mainAxisSpacing: 8,
+        // 아래와의 간격
+        crossAxisSpacing: 8,
+        // 양옆으로 간격
         crossAxisCount: 2,
-        padding: EdgeInsets.all(16), // 바깥쪽 테두리
-        childAspectRatio: 8.0 / 9.0, // 카드 비율
-        children: [
-          Container(color: Colors.purple, child: Center(child: Text('0'))),
-          Container(color: Colors.purple, child: Center(child: Text('1'))),
-          Container(color: Colors.purple, child: Center(child: Text('2'))),
-          Container(color: Colors.purple, child: Center(child: Text('3'))),
-          Container(color: Colors.purple, child: Center(child: Text('4'))),
-          Container(color: Colors.purple, child: Center(child: Text('5'))),
-        ],
+        padding: EdgeInsets.all(16),
+        // 바깥쪽 테두리
+        childAspectRatio: 8.0 / 9.0,
+        // 카드 비율
+        children: List.generate(
+          10, // 원소의 크기
+          (index) {
+            return Center(
+              child: Text(
+                "$index",
+                style: TextStyle(fontSize: 24),
+              ),
+            );
+          },
+        ),
       ),
     );
   }
