@@ -1,13 +1,25 @@
+import 'dart:io';
+
+import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+class MyHttpOverrides extends HttpOverrides{
+  @override
+  HttpClient createHttpClient(SecurityContext? context){
+    return super.createHttpClient(context)
+      ..badCertificateCallback = (X509Certificate cert, String host, int port)=> true;
+  }
+}
+
 void main() {
+  HttpOverrides.global = MyHttpOverrides();
   runApp(
     MultiProvider(
       providers: [
         ChangeNotifierProvider(
-          create: (context) => CatService(),
+          create: (context) => CatService(), // 생성자 호출 부분
         )
       ],
       child: const MyApp(),
@@ -31,6 +43,17 @@ class MyApp extends StatelessWidget {
 class CatService extends ChangeNotifier {
   // 고양이 사진 담을 변수
   List<String> catImages = [];
+
+  CatService() {
+    getRandomCatImages();
+  }
+
+  void getRandomCatImages() async {
+    Response result = await Dio().get(
+      "https://api.thecatapi.com/v1/images/search?limit=1&mime_types=jpg",
+    );
+    print(result.data);
+  }
 }
 
 class HomePage extends StatelessWidget {
