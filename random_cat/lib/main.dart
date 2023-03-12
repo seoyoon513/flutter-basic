@@ -30,7 +30,14 @@ class HomePage extends StatelessWidget {
         centerTitle: true,
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => FavoritePage(),
+                ),
+              );
+            },
             icon: Icon(CupertinoIcons.heart_fill),
           )
         ],
@@ -57,6 +64,21 @@ class HomePage extends StatelessWidget {
             );
           },
         ),
+      ),
+    );
+  }
+}
+
+// 좋아요 페이지
+class FavoritePage extends StatelessWidget {
+  const FavoritePage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("좋아요"),
+        backgroundColor: Colors.amber,
       ),
     );
   }
