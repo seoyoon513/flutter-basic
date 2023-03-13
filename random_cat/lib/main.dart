@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class MyHttpOverrides extends HttpOverrides{
   @override
@@ -13,13 +14,18 @@ class MyHttpOverrides extends HttpOverrides{
   }
 }
 
-void main() {
+Future<void> main() async {
+  // 2. main 함수에서 async를 쓰려면 필요
+  WidgetsFlutterBinding.ensureInitialized();
+  // 1. 파일 형태로 데이터 저장 -> 비동기 작동
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+
   HttpOverrides.global = MyHttpOverrides();
   runApp(
     MultiProvider(
       providers: [
         ChangeNotifierProvider(
-          create: (context) => CatService(), // 생성자 호출 부분
+          create: (context) => CatService(prefs), // 생성자 호출 부분
         )
       ],
       child: const MyApp(),
@@ -47,8 +53,14 @@ class CatService extends ChangeNotifier {
   // 좋아요 사진
   List<String> favoriteImages = [];
 
-  CatService() {
+  SharedPreferences prefs; // 2. 변수에 넣는다
+
+  CatService(this.prefs) { // 1. 생성자를 호출할 때 sp를 받아서
     getRandomCatImages();
+
+    // favorites로 저장된 favoriteImages를 가져온다
+    // 저장된 값이 없는 경우 null을 반환하므로 이때는 빈 배열을 넣어준다
+    favoriteImages = prefs.getStringList("favorites") ?? [];
   }
 
   // 랜덤 고양이 사진 API 호출
@@ -72,6 +84,8 @@ class CatService extends ChangeNotifier {
     } else {
       favoriteImages.add(catImage); // 추가
     }
+    // favoriteImages를 favorites라는 이름으로 저장하기
+    prefs.setStringList("favorites", favoriteImages);
     notifyListeners(); // Consumer 아래 빌더 부분이 다시 실행 -> 새로고침
   }
 }
