@@ -48,11 +48,19 @@ class CatService extends ChangeNotifier {
     getRandomCatImages();
   }
 
+  // 랜덤 고양이 사진 API 호출
   void getRandomCatImages() async {
     Response result = await Dio().get(
-      "https://api.thecatapi.com/v1/images/search?limit=1&mime_types=jpg",
+      "https://api.thecatapi.com/v1/images/search?limit=10&mime_types=jpg",
     );
     print(result.data);
+    for (var i = 0; i < result.data.length; i++) {
+      var map = result.data[i];
+      print(map);
+      print(map["url"]);
+      catImages.add(map["url"]);
+    }
+    notifyListeners();
   }
 }
 
@@ -89,19 +97,13 @@ class HomePage extends StatelessWidget {
             crossAxisSpacing: 8,
             // 양옆으로 간격
             crossAxisCount: 2,
-            padding: EdgeInsets.all(16),
+            padding: EdgeInsets.all(8),
             // 바깥쪽 테두리
-            childAspectRatio: 8.0 / 9.0,
-            // 카드 비율
             children: List.generate(
-              10, // 원소의 크기
+              catService.catImages.length, // 원소의 크기
               (index) {
-                return Center(
-                  child: Text(
-                    "$index",
-                    style: TextStyle(fontSize: 24),
-                  ),
-                );
+                String catImage = catService.catImages[index];
+                return Image.network(catImage, fit: BoxFit.cover,);
               },
             ),
           ),
