@@ -81,51 +81,71 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<CatService>(
-      builder: (context, catService, child) {
-        return Scaffold(
-          appBar: AppBar(
-            backgroundColor: Colors.amber,
-            title: Text('랜덤 고양이'),
-            centerTitle: true,
-            actions: [
-              IconButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => FavoritePage(),
-                    ),
-                  );
-                },
-                icon: Icon(CupertinoIcons.heart_fill),
-              )
-            ],
-          ),
-          body: GridView.count(
-            // 자동 스크롤
-            mainAxisSpacing: 8,
-            // 아래와의 간격
-            crossAxisSpacing: 8,
-            // 양옆으로 간격
-            crossAxisCount: 2,
-            padding: EdgeInsets.all(8),
-            // 바깥쪽 테두리
-            children: List.generate(
-              catService.catImages.length, // 원소의 크기
-              (index) {
-                String catImage = catService.catImages[index];
-                return GestureDetector(
-                    onTap: () {
-                      catService.toggleFavoriteImage(catImage);
-                    },
-                    child: Image.network(catImage, fit: BoxFit.cover,));
+    return Consumer<CatService>(builder: (context, catService, child) {
+      return Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.amber,
+          title: Text('랜덤 고양이'),
+          centerTitle: true,
+          actions: [
+            IconButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => FavoritePage(),
+                  ),
+                );
               },
-            ),
+              icon: Icon(CupertinoIcons.heart_fill),
+            )
+          ],
+        ),
+        body: GridView.count(
+          // 자동 스크롤
+          mainAxisSpacing: 8,
+          // 아래와의 간격
+          crossAxisSpacing: 8,
+          // 양옆으로 간격
+          crossAxisCount: 2,
+          padding: EdgeInsets.all(8),
+          // 바깥쪽 테두리
+          children: List.generate(
+            catService.catImages.length, // 원소의 크기
+            (index) {
+              String catImage = catService.catImages[index];
+              return GestureDetector(
+                onTap: () {
+                  catService.toggleFavoriteImage(catImage);
+                },
+                child: Stack(
+                  // 1. stack 안에 있는 child는 기본으로 화면을 꽉 채우지 않는다
+                  children: [
+                    Positioned.fill(
+                      // 2. 따라서 Positioned.fill 위젯으로 감싸야 한다
+                      child: Image.network(
+                        catImage,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    Positioned(
+                      right: 8,
+                      bottom: 8,
+                      child: Icon(
+                        Icons.favorite,
+                        color: catService.favoriteImages.contains(catImage)
+                            ? Colors.amber
+                            : Colors.transparent,
+                      ),
+                    )
+                  ],
+                ),
+              );
+            },
           ),
-        );
-      }
-    );
+        ),
+      );
+    });
   }
 }
 
