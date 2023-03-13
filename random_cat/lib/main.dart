@@ -44,6 +44,9 @@ class CatService extends ChangeNotifier {
   // 고양이 사진 담을 변수
   List<String> catImages = [];
 
+  // 좋아요 사진
+  List<String> favoriteImages = [];
+
   CatService() {
     getRandomCatImages();
   }
@@ -61,6 +64,15 @@ class CatService extends ChangeNotifier {
       catImages.add(map["url"]);
     }
     notifyListeners();
+  }
+
+  void toggleFavoriteImage(String catImage) {
+    if (favoriteImages.contains(catImage)) {
+      favoriteImages.remove(catImage); // 이미 좋아요한 경우 삭제
+    } else {
+      favoriteImages.add(catImage); // 추가
+    }
+    notifyListeners(); // Consumer 아래 빌더 부분이 다시 실행 -> 새로고침
   }
 }
 
@@ -103,7 +115,11 @@ class HomePage extends StatelessWidget {
               catService.catImages.length, // 원소의 크기
               (index) {
                 String catImage = catService.catImages[index];
-                return Image.network(catImage, fit: BoxFit.cover,);
+                return GestureDetector(
+                    onTap: () {
+                      catService.toggleFavoriteImage(catImage);
+                    },
+                    child: Image.network(catImage, fit: BoxFit.cover,));
               },
             ),
           ),
