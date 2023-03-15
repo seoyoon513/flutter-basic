@@ -1,7 +1,9 @@
 <application>
   <component name="AndroidLogcatFilterHistory">
+    <option name="mostRecentlyUsed" value="package:mine ###" />
     <option name="nonFavorites">
       <list>
+        <option value="package:mine ###" />
         <option value="package:mine " />
         <option value="package:mine RWRD_STJEL_CNT" />
         <option value="package:mine 모양" />
@@ -21,7 +23,6 @@
         <option value="agent" />
         <option value="package:mine !!!!" />
         <option value="package:mine encoding" />
-        <option value="package:mine agent" />
       </list>
     </option>
   </component>
