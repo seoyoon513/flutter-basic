@@ -1,8 +1,9 @@
 <application>
   <component name="AndroidLogcatFilterHistory">
-    <option name="mostRecentlyUsed" value="package:mine ####" />
+    <option name="mostRecentlyUsed" value="package:mine 라이브러리" />
     <option name="nonFavorites">
       <list>
+        <option value="package:mine 라이브러리" />
         <option value="package:mine ####" />
         <option value="Cre" />
         <option value="getCredential" />
@@ -22,7 +23,6 @@
         <option value="MENU_THUMING_URL" />
         <option value="package:mine MENU_THUMING_URL" />
         <option value="auth" />
-        <option value="header" />
       </list>
     </option>
   </component>
