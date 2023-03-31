@@ -1,0 +1,12 @@
+<application>
+  <component name="ProjectViewFileNesting">
+    <nesting-rules>
+      <NestingRule child-file-suffix=".dart.js" parent-file-suffix=".dart" />
+      <NestingRule child-file-suffix=".dart.js.deps" parent-file-suffix=".dart" />
+      <NestingRule child-file-suffix=".dart.js.map" parent-file-suffix=".dart" />
+      <NestingRule child-file-suffix=".dart.js.tar.gz" parent-file-suffix=".dart" />
+      <NestingRule child-file-suffix=".g.dart" parent-file-suffix=".dart" />
+      <NestingRule child-file-suffix=".module" parent-file-suffix=".dart" />
+    </nesting-rules>
+  </component>
+</application>
