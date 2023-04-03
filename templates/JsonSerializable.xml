@@ -1,5 +1,5 @@
 <templateSet group="JsonSerializable">
-  <template name="jsonSerializableFromJson" value="factory $NAME$.fromJson(Map&lt;String, dynamic&gt; json)&#10;=&gt; _$$$NAME$FromJson(json);" toReformat="false" toShortenFQNames="true">
+  <template name="jsonSerializableFromJson" value="factory $NAME$.fromJson(Map&lt;String, dynamic&gt; json)&#10;=&gt; _$$$NAME$FromJson(json);" description="" toReformat="false" toShortenFQNames="true">
     <variable name="NAME" expression="" defaultValue="" alwaysStopAt="true" />
     <context>
       <option name="DART" value="true" />
