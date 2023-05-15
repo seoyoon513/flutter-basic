@@ -1,8 +1,11 @@
 <application>
   <component name="AndroidLogcatFilterHistory">
-    <option name="mostRecentlyUsed" value="package:mine 8" />
+    <option name="mostRecentlyUsed" value="package:mine PUBLISHER" />
     <option name="nonFavorites">
       <list>
+        <option value="package:mine PUBLISHER" />
+        <option value="package:mine " />
+        <option value="package:mine LibraryCategoryFragment" />
         <option value="package:mine 8" />
         <option value="package:mine #######" />
         <option value="###" />
@@ -13,7 +16,6 @@
         <option value="getCredential" />
         <option value="package:mine getCredential(token)" />
         <option value="package:mine ###" />
-        <option value="package:mine " />
         <option value="package:mine RWRD_STJEL_CNT" />
         <option value="package:mine 모양" />
         <option value="package:mine" />
@@ -21,8 +23,6 @@
         <option value="package:mine NY" />
         <option value="package:mine [post" />
         <option value="package:mine Y" />
-        <option value="package:mine MENU" />
-        <option value="package:mine BANNER_ICON" />
       </list>
     </option>
   </component>
