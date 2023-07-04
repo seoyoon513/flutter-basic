@@ -18,6 +18,10 @@
           <option name="url" value="http://10017016@22.4.20.13:9444/r/bookclub/apps/bookclub_flutter.git" />
           <option name="userName" value="" />
         </UrlAndUserName>
+        <UrlAndUserName>
+          <option name="url" value="http://10017016@22.4.20.13:9444/r/bookclub/apps/Nfdictation.git" />
+          <option name="userName" value="" />
+        </UrlAndUserName>
       </list>
     </option>
     <option name="cloneParentDir" value="C:\dev" />
