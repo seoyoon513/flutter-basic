@@ -1,7 +1,12 @@
 <application>
   <component name="AndroidLogcatFilterHistory">
+    <option name="mostRecentlyUsed" value="package:mine success" />
     <option name="nonFavorites">
       <list>
+        <option value="package:mine success" />
+        <option value="success!!" />
+        <option value="pen" />
+        <option value="package:mine pen" />
         <option value="package:mine " />
         <option value="package:mine" />
         <option value="package:mine PUBLISHER" />
@@ -18,10 +23,6 @@
         <option value="package:mine ###" />
         <option value="package:mine RWRD_STJEL_CNT" />
         <option value="package:mine 모양" />
-        <option value="package:mine banner" />
-        <option value="package:mine NY" />
-        <option value="package:mine [post" />
-        <option value="package:mine Y" />
       </list>
     </option>
   </component>
