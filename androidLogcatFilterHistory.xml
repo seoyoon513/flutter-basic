@@ -1,15 +1,15 @@
 <application>
   <component name="AndroidLogcatFilterHistory">
-    <option name="mostRecentlyUsed" value="package:mine  CommonMa" />
+    <option name="mostRecentlyUsed" value="package:mine  " />
     <option name="nonFavorites">
       <list>
-        <option value="package:mine  CommonMa" />
         <option value="package:mine  " />
+        <option value="package:mine  key" />
+        <option value="package:mine  CommonMa" />
         <option value="package:mine  !!" />
         <option value="package:mine  테스트" />
         <option value="package:mine  CommonM" />
         <option value="package:mine  통과" />
-        <option value="package:mine  key" />
         <option value="package:mine  my" />
         <option value="package:mine " />
         <option value="package:mine success" />
