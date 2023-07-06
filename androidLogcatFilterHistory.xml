@@ -1,8 +1,10 @@
 <application>
   <component name="AndroidLogcatFilterHistory">
-    <option name="mostRecentlyUsed" value="package:mine  my" />
+    <option name="mostRecentlyUsed" value="package:mine  " />
     <option name="nonFavorites">
       <list>
+        <option value="package:mine  " />
+        <option value="package:mine  key" />
         <option value="package:mine  my" />
         <option value="package:mine " />
         <option value="package:mine success" />
@@ -21,8 +23,6 @@
         <option value="Cre" />
         <option value="getCredential" />
         <option value="package:mine getCredential(token)" />
-        <option value="package:mine ###" />
-        <option value="package:mine RWRD_STJEL_CNT" />
       </list>
     </option>
   </component>
