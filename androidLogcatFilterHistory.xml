@@ -1,13 +1,12 @@
 <application>
   <component name="AndroidLogcatFilterHistory">
-    <option name="mostRecentlyUsed" value="package:mine success" />
     <option name="nonFavorites">
       <list>
+        <option value="package:mine " />
         <option value="package:mine success" />
         <option value="success!!" />
         <option value="pen" />
         <option value="package:mine pen" />
-        <option value="package:mine " />
         <option value="package:mine" />
         <option value="package:mine PUBLISHER" />
         <option value="package:mine LibraryCategoryFragment" />
