@@ -1,8 +1,10 @@
 <application>
   <component name="AndroidLogcatFilterHistory">
-    <option name="mostRecentlyUsed" value="package:mine  " />
+    <option name="mostRecentlyUsed" value="package:mine  [send" />
     <option name="nonFavorites">
       <list>
+        <option value="package:mine  [send" />
+        <option value="package:mine  Method" />
         <option value="package:mine  " />
         <option value="package:mine  key" />
         <option value="package:mine  CommonMa" />
@@ -21,8 +23,6 @@
         <option value="package:mine LibraryCategoryFragment" />
         <option value="package:mine 8" />
         <option value="package:mine #######" />
-        <option value="###" />
-        <option value="package:mine ####" />
       </list>
     </option>
   </component>
